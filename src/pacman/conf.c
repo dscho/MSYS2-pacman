@@ -389,6 +389,13 @@ static int process_siglevel(alpm_list_t *values, alpm_siglevel_t *storage,
 			if(database) {
 				SLSET(ALPM_SIG_DATABASE_MARGINAL_OK | ALPM_SIG_DATABASE_UNKNOWN_OK);
 			}
+		} else if(strcmp(value, "BogusRedirect") == 0) {
+			if(package) {
+				SLSET(ALPM_SIG_DATABASE_BOGUS_REDIRECT);
+			}
+			if(database) {
+				SLSET(ALPM_SIG_DATABASE_BOGUS_REDIRECT);
+			}
 		} else {
 			pm_printf(ALPM_LOG_ERROR,
 					_("config file %s, line %d: invalid value for '%s' : '%s'\n"),
